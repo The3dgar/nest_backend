@@ -28,7 +28,7 @@ export class AllExceptionFilter implements ExceptionFilter {
     const path = request.url;
 
     // TODO: save logger in db
-
+console.log(error)
     this.logger.error(
       `Status: ${status} Error: ${JSON.stringify(error)} path: ${path}`,
     );

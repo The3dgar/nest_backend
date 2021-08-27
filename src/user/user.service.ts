@@ -37,7 +37,7 @@ export class UserService {
       password: hash,
     };
 
-    return await this.model.findByIdAndUpdate(id, user);
+    return await this.model.findByIdAndUpdate(id, user, { new: true });
   }
 
   async delete(id: string) {

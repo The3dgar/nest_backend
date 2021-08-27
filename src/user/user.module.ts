@@ -10,9 +10,7 @@ import { UserService } from './user.service';
     MongooseModule.forFeatureAsync([
       {
         name: UserModel.name,
-        useFactory: () => {
-          return UserSchema;
-        },
+        useFactory: () => UserSchema,
       },
     ]),
   ],
