@@ -7,12 +7,16 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { TokenGuard } from 'src/auth/guards/token.guard';
 import { PassengerDTO } from './dto/passenger.dto';
 import { PassengerService } from './passenger.service';
 
 @ApiTags('Passengers')
+@ApiBearerAuth()
+@UseGuards(TokenGuard)
 @Controller('api/v1/passenger')
 export class PassengerController {
   constructor(private readonly passengerService: PassengerService) {}

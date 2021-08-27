@@ -6,7 +6,7 @@ export const UserSchema = new Schema(
       type: String,
       required: true,
     },
-    userName: { type: String, required: true },
+    username: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true, select: false },
   },
@@ -16,5 +16,5 @@ export const UserSchema = new Schema(
   },
 );
 
-UserSchema.index({ userName: 1 }, { unique: true });
+UserSchema.index({ username: 1 }, { unique: true });
 UserSchema.index({ email: 1 }, { unique: true });

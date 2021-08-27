@@ -7,7 +7,7 @@ export class UserDTO {
   readonly name: string;
   @ApiProperty()
   @IsString()
-  readonly userName: string;
+  readonly username: string;
   @ApiProperty()
   @IsString()
   @IsEmail()

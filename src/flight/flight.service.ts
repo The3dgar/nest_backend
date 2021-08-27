@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import axios from 'axios';
-import moment from 'moment';
+import * as moment from 'moment';
 import { Model } from 'mongoose';
 import { FlightInterface } from 'src/common/interfaces/flight.interface';
 import {
@@ -20,7 +20,7 @@ export class FlightService {
 
   async getLocation(city: string): Promise<LocationInterface> {
     const { data } = await axios.get<LocationInterface[]>(
-      `https://www.metaweather.com/api/location/search/?query=${city}`,
+      `${process.env.WEATHER_API}/search/?query=${city}`,
     );
 
     return data[0];
@@ -29,7 +29,7 @@ export class FlightService {
   async getWeather(cityId: number, date: Date): Promise<WeatherInterface[]> {
     const dateFormat = moment(date).format('YYYY/MM/DD');
     const { data } = await axios.get(
-      `https://www.metaweather.com/api/location/${cityId}/${dateFormat}`,
+      `${process.env.WEATHER_API}/${cityId}/${dateFormat}`,
     );
 
     return data;

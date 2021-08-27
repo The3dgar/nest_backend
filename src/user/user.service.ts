@@ -43,4 +43,15 @@ export class UserService {
   async delete(id: string) {
     await this.model.findByIdAndDelete(id);
   }
+
+  async findByUsername(username: string): Promise<UserInterface> {
+    return await this.model.findOne({ username }).select("username password");
+  }
+
+  async checkPassword(
+    password: string,
+    passwordDb: string,
+  ): Promise<Boolean> {
+    return await bcrypt.compare(password, passwordDb);
+  }
 }

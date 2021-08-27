@@ -15,6 +15,7 @@ async function bootstrap() {
     .setTitle('SuperFlights API')
     .setDescription('Scheduled Flights App')
     .setVersion('1.0.0')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, options);
@@ -24,6 +25,6 @@ async function bootstrap() {
     },
     customSiteTitle: "SuperFlights API - DOC",
   });
-  await app.listen(3000);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
