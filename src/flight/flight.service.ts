@@ -9,7 +9,7 @@ import {
   WeatherInterface,
 } from 'src/common/interfaces/weather.interface';
 import { FlightModel, PassengerModel } from 'src/common/models/models';
-import { FlightDto } from './dto/flight.dto';
+import { FlightDTO } from './dto/flight.dto';
 
 @Injectable()
 export class FlightService {
@@ -57,7 +57,7 @@ export class FlightService {
     });
   }
 
-  async create(flight: FlightDto): Promise<FlightInterface> {
+  async create(flight: FlightDTO): Promise<FlightInterface> {
     return await new this.model(flight).save();
   }
 
@@ -79,7 +79,7 @@ export class FlightService {
     return this.assign(flight, weather);
   }
 
-  async update(id: string, flight: FlightDto): Promise<FlightInterface> {
+  async update(id: string, flight: FlightDTO): Promise<FlightInterface> {
     return await this.model.findByIdAndUpdate(id, flight, { new: true });
   }
 

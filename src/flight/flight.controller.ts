@@ -9,10 +9,12 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { PassengerService } from 'src/passenger/passenger.service';
-import { FlightDto } from './dto/flight.dto';
+import { FlightDTO } from './dto/flight.dto';
 import { FlightService } from './flight.service';
 
+@ApiTags("Flights")
 @Controller('api/v1/flight')
 export class FlightController {
   constructor(
@@ -21,7 +23,7 @@ export class FlightController {
   ) {}
 
   @Post()
-  create(@Body() flight: FlightDto) {
+  create(@Body() flight: FlightDTO) {
     return this.flighService.create(flight);
   }
 
@@ -36,7 +38,7 @@ export class FlightController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() flight: FlightDto) {
+  update(@Param('id') id: string, @Body() flight: FlightDTO) {
     return this.flighService.update(id, flight);
   }
 
